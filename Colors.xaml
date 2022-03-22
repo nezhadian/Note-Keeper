@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Note_Keeper">
+    <SolidColorBrush x:Key="TextColor" Color="#222"/>
+    <SolidColorBrush x:Key="SubTextColor" Color="Gray"/>
+    <SolidColorBrush x:Key="DetailTextColor" Color="DimGray"/>
+    
+    <SolidColorBrush x:Key="Button.MouseOver.Background" Color="Red"/>
+    
+    <SolidColorBrush x:Key="PrimaryColor" Color="#FF0099FF"/>
+    <SolidColorBrush x:Key="PressedPrimaryColor" Color="#FF11AAFF"/>
+    <SolidColorBrush x:Key="HoverPrimaryColor" Color="#FF0088EE"/>
+    <SolidColorBrush x:Key="CTAButtonTextColor" Color="White"/>
+
+    <SolidColorBrush x:Key="IconsColor" Color="#999"/>
+    <SolidColorBrush x:Key="IconHoverColor" Color="#555"/>
+    
+    <SolidColorBrush x:Key="BackgroundColor" Color="#eee"/>
+    <SolidColorBrush x:Key="AlertColor" Color="#FFF10B4A"/>
+    
+    <SolidColorBrush x:Key="SecondaryColor" Color="#ddd"/>
+    <SolidColorBrush x:Key="SecondaryHoverColor" Color="#ccc"/>
+    <SolidColorBrush x:Key="SecondaryPressedColor" Color="#bbb"/>
+
+    <SolidColorBrush x:Key="TextboxNoFocusColor" Color="#555"/>
+    <SolidColorBrush x:Key="WindowTitleBarColor" Color="#ddd"/>
+
+</ResourceDictionary>

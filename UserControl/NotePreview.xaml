@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="Note_Keeper.NotePreview"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Note_Keeper"
+             mc:Ignorable="d" 
+             MouseEnter="Mouse_Enter"
+             MouseLeave="Mouse_Leave"
+             d:DesignHeight="96" d:DesignWidth="300">
+    <Border Padding="20,10" MinHeight="90" Background="Transparent">
+        <Grid>
+            
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <TextBlock 
+                    Style="{StaticResource TitleText}"
+                    x:Name="txtTitle"
+                    Text="Title"/>
+
+                <TextBlock
+                    Padding="20,0,0,0"
+                    Style="{StaticResource NormalText}"
+                    Foreground="{StaticResource SubTextColor}"
+                    x:Name="txtContent"
+                    Text="Content"/>
+                
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" x:Name="pnlControls" Visibility="Hidden">
+                    <Button Style="{StaticResource IconButtonStyle}" Content="edit" Click="Edit_Clicked" />
+                    <Button Style="{StaticResource IconButtonStyle}" Content="delete" Click="Delete_Clicked" Margin="10,0,0,0"/>
+                </StackPanel>
+                
+                <TextBlock  Margin="0,10,0,0" x:Name="txtDate" Style="{StaticResource DetailText}" Foreground="{DynamicResource DetailTextColor}" HorizontalAlignment="Right"/>
+            </StackPanel>
+            
+        </Grid>
+    </Border>
+
+</UserControl>

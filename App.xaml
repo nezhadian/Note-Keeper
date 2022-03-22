@@ -4,6 +4,21 @@
              xmlns:local="clr-namespace:Note_Keeper"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="LocalValues.xaml" >
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Colors.xaml"/>
+                <ResourceDictionary Source="LocalValues.xaml"/>
+                <ResourceDictionary Source="Styles/ListBoxStyle.xaml"/>
+                <ResourceDictionary Source="Styles/TextBlockStyle.xaml"/>
+                <ResourceDictionary Source="Styles/ButtonsStyle.xaml"/>
+                <ResourceDictionary Source="Styles/IconButtonStyle.xaml"/>
+                <ResourceDictionary Source="Styles/ScrollbarsStyle.xaml"/>
+                <ResourceDictionary Source="Styles/IconToolbarButton.xaml"/>
+                <ResourceDictionary Source="Styles/TextboxStyle.xaml"/>
+                <ResourceDictionary Source="Styles/ScrollViewerStyle.xaml"/>
+                <ResourceDictionary Source="WindowStyle.xaml"/>
+                <ResourceDictionary Source="Styles/ToggleButtonStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>         
     </Application.Resources>
 </Application>

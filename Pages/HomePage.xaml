@@ -1,0 +1,32 @@
+﻿<Page x:Class="Note_Keeper.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Note_Keeper"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1366"
+      SizeChanged="Page_SizeChanged"
+      Title="HomePage">
+
+    <Grid>
+        <Grid Margin="20" x:Name="mainContent">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="450" x:Name="c1"/>
+                <ColumnDefinition Width="*" x:Name="c2"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Button HorizontalAlignment="Left" Style="{StaticResource CTAButtonStyle}" Content="Write an Note" Margin="0,0,0,20" Command="{x:Static ApplicationCommands.New}"/>
+
+            <ListBox x:Name="lstNotes" SelectionChanged="OnSelectionChanged" Style="{StaticResource ListBoxStyle}" Grid.Row="1" />
+
+            <local:NoteLongPreview x:Name="ctlNotePreview" Grid.Column="1" Grid.Row="1" MinWidth="300"/>
+
+        </Grid>
+    </Grid>
+</Page>

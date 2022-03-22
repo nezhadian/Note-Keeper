@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,37 @@ namespace Note_Keeper
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static NavigationService Navigator { private set; get; }
+        public static NavigationService DialogNavigator { private set; get; }
+        
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            Navigator = navigator.NavigationService;
+            DialogNavigator = nvgDialog.NavigationService;
+            Home.OpenHome();
+        }
+
+        private void NewCommand_Excuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            ShowEditor(new EditorPage());
+        }
+        private void NewCommand_Checked(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        public static void ShowEditor(EditorPage editor)
+        {
+            if (Navigator == null)
+                return;
+
+            Navigator.Content = editor;
         }
     }
 }

@@ -1,0 +1,69 @@
+﻿<Page x:Class="Note_Keeper.EditorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Note_Keeper"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1366"
+      Loaded="Page_Loaded"
+      Title="AddPage">
+
+    <Page.CommandBindings>
+        <CommandBinding
+            Command="{x:Static ApplicationCommands.Save}"
+            Executed="SaveCommand_Excuted"
+            CanExecute="SaveCommand_Checked"
+            />
+    </Page.CommandBindings>
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            
+            <Button Content="home"  Click="Home_Clicked" Style="{StaticResource IconToolbarButtonStyle}" VerticalAlignment="Center"/>
+            <Button Content="save" Style="{StaticResource IconToolbarButtonStyle}" Command="{x:Static ApplicationCommands.Save}" VerticalAlignment="Center"/>
+
+            <Rectangle Fill="{DynamicResource SecondaryColor}" Width="2" Margin="5,5,10,5"/>
+
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Content="&#xE236;" Style="{StaticResource ToggleButtonStyle}" IsChecked="{Binding Converter={StaticResource EnumConverter},Path=TextAlignment,ConverterParameter=Left,ElementName=txtContent,Mode=TwoWay}" />
+                <RadioButton Content="&#xE234;" Style="{StaticResource ToggleButtonStyle}" IsChecked="{Binding Converter={StaticResource EnumConverter},Path=TextAlignment,ConverterParameter=Center,ElementName=txtContent,Mode=TwoWay}" />
+                <RadioButton Content="&#xE237;" Style="{StaticResource ToggleButtonStyle}" IsChecked="{Binding Converter={StaticResource EnumConverter},Path=TextAlignment,ConverterParameter=Right,ElementName=txtContent,Mode=TwoWay}"/>
+            </StackPanel>
+
+            <Rectangle Fill="{DynamicResource SecondaryColor}" Width="2" Margin="5"/>
+
+            <ToggleButton Content="wrap_text" Style="{StaticResource ToggleButtonStyle}" IsChecked="{Binding Converter={StaticResource EnumConverter},Path=TextWrapping,ConverterParameter=Wrap NoWrap,ElementName=txtContent,Mode=TwoWay}"/>
+
+        </StackPanel>
+
+        <TextBox 
+            Grid.Row="1"
+            Margin="0,5,0,0"
+            x:Name="txtTitle"
+            FontSize="24"
+            TextChanged="Text_Changed"
+            Style="{StaticResource TextboxStyle}"
+            Text="This is Title"/>
+
+        <Rectangle Fill="{DynamicResource SecondaryColor}" Grid.Row="2" Height="1" Margin="0,5"/>
+
+        <TextBox 
+            Grid.Row="3"
+            x:Name="txtContent"
+            AcceptsReturn="True"
+            AcceptsTab="True"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalScrollBarVisibility="Auto"
+            TextChanged="Text_Changed"
+            Style="{StaticResource TextboxStyle}"
+            Text="This is a long Text"/>
+    </Grid>
+</Page>

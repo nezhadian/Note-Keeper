@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Note_Keeper"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        WindowStartupLocation="CenterScreen"
+        MinWidth="400"
+        Width="800"
+        Height="600"
         
+        Style="{StaticResource WindowStyle}"
+        Title="Note Keeper" >
+    <Window.CommandBindings>
+        <CommandBinding 
+            Command="{x:Static ApplicationCommands.New}"
+            Executed="NewCommand_Excuted"
+            CanExecute="NewCommand_Checked"
+            />
+    </Window.CommandBindings>
+    <Grid>
+        <Frame NavigationUIVisibility="Hidden"  x:Name="navigator" x:FieldModifier="private"/>
+        <Frame NavigationUIVisibility="Hidden" x:Name="nvgDialog" x:FieldModifier="private"  />
     </Grid>
 </Window>

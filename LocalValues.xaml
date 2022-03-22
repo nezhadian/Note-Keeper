@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Note_Keeper" xmlns:System="clr-namespace:System;assembly=mscorlib">
+    <FontFamily x:Key="MaterialIcons">pack://application:,,,/Fonts/#Material Icons</FontFamily>
+
+    <System:Double x:Key="Scrollbar.Width">10</System:Double>
+    <CornerRadius x:Key="Scrollbar.HalfWidth">5</CornerRadius>
+
+    <local:EnumConverter x:Key="EnumConverter"/>
+
+</ResourceDictionary>
