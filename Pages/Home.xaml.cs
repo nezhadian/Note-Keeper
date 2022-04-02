@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -46,25 +47,38 @@ namespace Note_Keeper
         }
         private void LoadData()
         {
-            Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
-
-            GoToPage(loadPage);
-            
-            NoteData[] data = DbManager.ReadNotesList();
-
-            if (data.Length == 0)
+            try
             {
-                GoToPage(emptyPage);
-            }
-            else
-            {
-                Application.Current.Dispatcher.Invoke((Action)delegate
+                GoToPage(loadPage);
+
+                NoteData[] data = DbManager.ReadNotesList();
+
+                if (data.Length == 0)
                 {
-                    homePage.UpdateNoteList(data);
-                    container.Content = homePage;
-                });
-                
-                
+                    GoToPage(emptyPage);
+                }
+                else
+                {
+                    Application.Current.Dispatcher.Invoke((Action)delegate
+                    {
+                        homePage.UpdateNoteList(data);
+                        container.Content = homePage;
+                    });
+
+
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                //File.WriteAllLines("C:\\log.txt", new string[]{
+                //    "Exception : " + ex.ToString(),
+                //    "InnerEx : " + ex.InnerException.ToString(),
+                //    "Stack Trace : " + ex.StackTrace,
+                //    "Source : " + ex.Source,
+                //    "Message : " + ex.Message,
+                //    "HelpLink : " + ex.HelpLink,
+                //    "Data : " + ex.Data.ToString()
+                //});
             }
         }
 

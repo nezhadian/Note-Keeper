@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -17,6 +18,38 @@ namespace Note_Keeper
 
         public static event EventHandler OnDeleted;
 
+
+        static DbManager()
+        {
+            try
+            {
+                var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+
+                FileInfo fileInfo = new FileInfo(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\" + assembly.GetName().Name + "\\Notes.mdf");
+
+                if (!fileInfo.Exists)
+                {
+                    if (!fileInfo.Directory.Exists)
+                        fileInfo.Directory.Create();
+
+                    using (var res = assembly.GetManifestResourceStream("Note_Keeper.Notes.mdf"))
+                    {
+                        FileStream dbFile = fileInfo.Open(FileMode.Create, FileAccess.Write);
+                        res.CopyTo(dbFile);
+                        dbFile.Close();
+                    }
+                }
+
+                connection = new SqlConnection($"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={fileInfo.FullName};Integrated Security=True;Connect Timeout=30");
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("We can't save your data an error occered when create database : \r\n\r\n" + ex);
+                Environment.Exit(1);
+            }
+        }
 
         public static int Add(string title,string content)
         {
