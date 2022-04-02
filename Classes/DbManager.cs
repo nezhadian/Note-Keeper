@@ -12,13 +12,15 @@ namespace Note_Keeper
 {
     class DbManager
     {
-        const string CONNECTION_STRING = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"G:\\Note Keeper\\Notes.mdf\";Integrated Security=True;Connect Timeout=30";
-        public static SqlConnection connection = new SqlConnection($"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={Environment.CurrentDirectory + "\\Notes.mdf"};Integrated Security=True;Connect Timeout=30");
-
+        #region Events
 
         public static event EventHandler OnDeleted;
 
+        #endregion
 
+        #region Db Connection
+
+        public static SqlConnection connection;
         static DbManager()
         {
             try
@@ -51,7 +53,11 @@ namespace Note_Keeper
             }
         }
 
-        public static int Add(string title,string content)
+        #endregion
+
+        #region CRUD Functions
+
+        internal static int Add(string title,string content)
         {
             Execute(
 
@@ -64,7 +70,7 @@ namespace Note_Keeper
             return GetLastId();
         }
 
-        public static void Update(int id,string title,string content)
+        internal static void Update(int id,string title,string content)
         {
             Execute(
 
@@ -82,28 +88,31 @@ namespace Note_Keeper
             OnDeleted?.Invoke(null,null);
         }
 
-        public static NoteData[] ReadNotesList()
+        internal static NoteData[] ReadNotesList()
         {
             return ExecuteReader<NoteData>("ReadNoteList");
         }
 
-        public static NoteData ReadNote(int id)
+        internal static NoteData ReadNote(int id)
         {
             return ExecuteReader<NoteData>("ReadNote @Id",new IDbDataParameter[] { new SqlParameter("@Id",id)})[0];
         }
 
-
-        public static int GetLastId()
+        internal static int GetLastId()
         {
             OpenConnection();
 
             var command = connection.CreateCommand();
-            command.CommandText = "select max(id)  from tblNotes";
+            command.CommandText = "GetLastID";
 
             object firstRecordField = command.ExecuteScalar();
 
             return firstRecordField is int ? (int)firstRecordField : 0;
+
         }
+
+        #endregion
+
 
         public static T[] ExecuteReader<T>(string commandText, IDbDataParameter[] parameters = null)
         {
