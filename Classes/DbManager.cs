@@ -90,7 +90,14 @@ namespace Note_Keeper
 
         internal static NoteData[] ReadNotesList()
         {
-            return ExecuteReader<NoteData>("ReadNoteList");
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+            var list = ExecuteReader<NoteData>("ReadNoteList");
+
+            sw.Stop();
+            File.AppendAllText("G:\\notekeeper.txt",$"{DateTime.Now}: Reading note list time {sw.ElapsedMilliseconds}ms \r\n");
+            return list;
         }
 
         internal static NoteData ReadNote(int id)
