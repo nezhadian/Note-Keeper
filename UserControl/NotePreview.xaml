@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            
+
             <!--Title-->
             <TextBlock 
                     Style="{StaticResource TitleText}"
@@ -46,5 +46,4 @@
 
         </Grid>
     </Border>
-
 </UserControl>

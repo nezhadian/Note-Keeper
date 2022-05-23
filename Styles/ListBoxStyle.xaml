@@ -7,14 +7,21 @@
     </Style>
     <Style TargetType="ListBoxItem" >
         <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Background" Value="{DynamicResource SecondaryColor}"/>
-        <Setter Property="Margin" Value="0,0,0,5"/>
+        <Setter Property="Background" Value="{DynamicResource BackgroundColor}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
-                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid>
                             <ContentPresenter/>
+                            <Border 
+                                Background="#09f" 
+                                Width="8"
+                                CornerRadius="0,8,8,0"
+                                HorizontalAlignment="Left"
+                                Visibility="Hidden"
+                                x:Name="selectDock"
+                                       />
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -22,8 +29,8 @@
                             <Setter Property="Background" Value="{DynamicResource SecondaryHoverColor}"/>
                         </Trigger>
                         <Trigger Property="IsSelected" Value="true">
-                            <Setter Property="BorderBrush" Value="#09f"/>
-                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="Visibility" Value="Visible" TargetName="selectDock"/>
+                            <Setter Property="Background" Value="#100099ff" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

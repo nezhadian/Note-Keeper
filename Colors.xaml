@@ -20,7 +20,7 @@
     <SolidColorBrush x:Key="AlertColor" Color="#FFF10B4A"/>
     
     <SolidColorBrush x:Key="SecondaryColor" Color="#ddd"/>
-    <SolidColorBrush x:Key="SecondaryHoverColor" Color="#ccc"/>
+    <SolidColorBrush x:Key="SecondaryHoverColor" Color="#FFDEDEDE"/>
     <SolidColorBrush x:Key="SecondaryPressedColor" Color="#bbb"/>
 
     <SolidColorBrush x:Key="WindowTitleBarColor" Color="#ddd"/>
