@@ -8,34 +8,42 @@
              MouseEnter="Mouse_Enter"
              MouseLeave="Mouse_Leave"
              d:DesignHeight="96" d:DesignWidth="300">
-    <Border Padding="20,10" MinHeight="90" Background="Transparent">
+    <Border Padding="20"  Background="Transparent">
         <Grid>
+            <!--Layouts-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
             
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Stretch">
-                <TextBlock 
+            <!--Title-->
+            <TextBlock 
                     Style="{StaticResource TitleText}"
                     x:Name="txtTitle"
                     Text="Title"/>
 
-                <TextBlock
-                    Padding="20,0,0,0"
+            <!--Controls-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" x:Name="pnlControls" Visibility="Hidden" Grid.Column="1">
+                <Button Style="{StaticResource IconButtonStyle}" Content="edit" Click="Edit_Clicked" />
+                <Button Style="{StaticResource IconButtonStyle}" Content="delete" Click="Delete_Clicked" Margin="10,0,0,0"/>
+            </StackPanel>
+
+            <!--Content-->
+            <TextBlock
+                    Grid.Row="1"
                     Style="{StaticResource NormalText}"
                     Foreground="{StaticResource SubTextColor}"
                     x:Name="txtContent"
                     Text="Content"/>
-                
-            </StackPanel>
 
-            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
-                
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" x:Name="pnlControls" Visibility="Hidden">
-                    <Button Style="{StaticResource IconButtonStyle}" Content="edit" Click="Edit_Clicked" />
-                    <Button Style="{StaticResource IconButtonStyle}" Content="delete" Click="Delete_Clicked" Margin="10,0,0,0"/>
-                </StackPanel>
-                
-                <TextBlock  Margin="0,10,0,0" x:Name="txtDate" Style="{StaticResource DetailText}" Foreground="{DynamicResource DetailTextColor}" HorizontalAlignment="Right"/>
-            </StackPanel>
-            
+            <!--Last Edited-->
+            <TextBlock   x:Name="txtDate" Style="{StaticResource DetailText}" Foreground="{DynamicResource DetailTextColor}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
+
         </Grid>
     </Border>
 

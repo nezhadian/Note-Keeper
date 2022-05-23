@@ -21,7 +21,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -49,14 +48,15 @@
             Margin="0,5,0,0"
             x:Name="txtTitle"
             FontSize="24"
+            FontWeight="SemiBold"
             TextChanged="Text_Changed"
             Style="{StaticResource TextboxStyle}"
             Text="This is Title"/>
 
-        <Rectangle Fill="{DynamicResource SecondaryColor}" Grid.Row="2" Height="1" Margin="0,5"/>
+        <!--<Rectangle Fill="{DynamicResource SecondaryColor}" Grid.Row="2" Height="1" Margin="0,5"/>-->
 
         <TextBox 
-            Grid.Row="3"
+            Grid.Row="2"
             x:Name="txtContent"
             AcceptsReturn="True"
             AcceptsTab="True"
@@ -64,6 +64,8 @@
             HorizontalScrollBarVisibility="Auto"
             TextChanged="Text_Changed"
             Style="{StaticResource TextboxStyle}"
+            Padding="0,10,0,0"
+            Foreground="{DynamicResource ContentColor}"
             Text="This is a long Text"/>
     </Grid>
 </Page>

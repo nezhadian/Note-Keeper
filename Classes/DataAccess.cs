@@ -33,23 +33,31 @@ namespace Note_Keeper
 
         internal static int Add(NoteData data)
         {
-            XmlSerializer xml = new XmlSerializer(typeof(NoteData));
 
             int id = GetLastId() + 1;
             data.Id = id;
             data.DateAdded = data.DateModified = DateTime.Now;
 
-            xml.Serialize(File.OpenWrite(GetIdPath(id)), data);
+            SaveNote(data);
             return id;
             
         }
 
-
         internal static void Update(NoteData data)
         {
             data.DateModified = DateTime.Now;
+            SaveNote(data);
+        }
+
+        private static void SaveNote(NoteData data)
+        {
+            FileStream fs = File.OpenWrite(GetIdPath(data.Id));
             XmlSerializer xml = new XmlSerializer(typeof(NoteData));
-            xml.Serialize(File.OpenWrite(GetIdPath(data.Id)), data);
+            
+            xml.Serialize(fs, data);
+            fs.SetLength(fs.Position);
+            fs.Flush();
+            fs.Close();
         }
 
         internal static void Delete(int id)
@@ -67,7 +75,7 @@ namespace Note_Keeper
             DirectoryInfo info = new DirectoryInfo("data");
             foreach (var file in info.GetFiles())
             {
-                noteList.Add((NoteData)xml.Deserialize(file.OpenRead()));
+                    noteList.Add((NoteData)xml.Deserialize(file.OpenRead()));
             }
 
             return noteList.ToArray();

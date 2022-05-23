@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Note_Keeper">
-    <SolidColorBrush x:Key="TextColor" Color="#222"/>
+    <SolidColorBrush x:Key="TextColor" Color="#333"/>
+    <SolidColorBrush x:Key="ContentColor" Color="#444"/>
     <SolidColorBrush x:Key="SubTextColor" Color="Gray"/>
     <SolidColorBrush x:Key="DetailTextColor" Color="DimGray"/>
     
@@ -22,7 +23,6 @@
     <SolidColorBrush x:Key="SecondaryHoverColor" Color="#ccc"/>
     <SolidColorBrush x:Key="SecondaryPressedColor" Color="#bbb"/>
 
-    <SolidColorBrush x:Key="TextboxNoFocusColor" Color="#555"/>
     <SolidColorBrush x:Key="WindowTitleBarColor" Color="#ddd"/>
 
 </ResourceDictionary>
