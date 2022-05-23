@@ -60,13 +60,13 @@ namespace Note_Keeper
                 Message = $"Realy you want to delete \"{Data.Title}\" note",
                 ButtonsMode = DialogBox.DialogMode.TwoButton
 
-            }.OnAccept += (s, r) => DbManager.Delete(Data.Id);
+            }.OnAccept += (s, r) => DataAccess.Delete(Data.Id);
         }
 
 
         private void Edit_Clicked(object sender, RoutedEventArgs e)
         {
-            MainWindow.ShowEditor(new EditorPage(Data.Id));
+            MainWindow.ShowEditor(new EditorPage(Data));
         }
         
 

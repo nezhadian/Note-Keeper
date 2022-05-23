@@ -46,12 +46,6 @@ namespace Note_Keeper
             InitializeComponent();
             Data = data;
         }
-        public EditorPage(int id) 
-        {
-            InitializeComponent();
-            NoteData data = DbManager.ReadNote(id);
-            Data = data;
-        }
         public EditorPage():this(new NoteData()){}
 
         #endregion
@@ -118,12 +112,15 @@ namespace Note_Keeper
 
         private void SaveCommand_Excuted(object sender, ExecutedRoutedEventArgs e)
         {
+            Data.Title = txtTitle.Text;
+            Data.Content = txtContent.Text;
+
             if (Data.Id == 0)
 
-                Data.Id = DbManager.Add(txtTitle.Text, txtContent.Text);
+                Data.Id = DataAccess.Add(Data);
 
             else
-                DbManager.Update(Data.Id, txtTitle.Text, txtContent.Text);
+                DataAccess.Update(Data);
 
             CanSave = false;
         }

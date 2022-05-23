@@ -42,12 +42,8 @@ namespace Note_Keeper
         }
         public NoteLongPreview():this(null){}
 
-        public void LoadData(int id)
-        {
-            NoteData data = DbManager.ReadNote(id);
-            data.Id = id;
-            Data = data;
-        }
+        
+
 
         private void Edit_Clicked(object sender, RoutedEventArgs e)
         {
@@ -56,7 +52,7 @@ namespace Note_Keeper
 
         internal void ClearData()
         {
-            txtTitle.Text = 
+            txtTitle.Text =
             txtContent.Text = "";
             btnEdit.Visibility = Visibility.Hidden;
         }

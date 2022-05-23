@@ -33,8 +33,7 @@ namespace Note_Keeper
             if (lstNotes.SelectedIndex == -1 || ctlNotePreview.Visibility != Visibility.Visible)
                 return;
 
-            int id = ((NotePreview)lstNotes.SelectedValue).Data.Id;
-            ctlNotePreview.LoadData(id);
+            ctlNotePreview.Data = ((NotePreview)lstNotes.SelectedValue).Data;
 
         }
 

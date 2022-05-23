@@ -33,7 +33,7 @@ namespace Note_Keeper
             emptyPage = new EmptyNotebookPage();
             homePage = new HomePage();
 
-            DbManager.OnDeleted += Refresh_Data;
+            DataAccess.OnDeleted += Refresh_Data;
             
         }
 
@@ -51,9 +51,9 @@ namespace Note_Keeper
             {
                 GoToPage(loadPage);
 
-                NoteData[] data = DbManager.ReadNotesList();
+                NoteData[] data = DataAccess.ReadNotesList();
 
-                if (data.Length == 0)
+                if (data == null || data.Length == 0)
                 {
                     GoToPage(emptyPage);
                 }
@@ -63,22 +63,14 @@ namespace Note_Keeper
                     {
                         homePage.UpdateNoteList(data);
                         container.Content = homePage;
-                    });
+                    },System.Windows.Threading.DispatcherPriority.Loaded);
 
 
                 }
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-                //File.WriteAllLines("C:\\log.txt", new string[]{
-                //    "Exception : " + ex.ToString(),
-                //    "InnerEx : " + ex.InnerException.ToString(),
-                //    "Stack Trace : " + ex.StackTrace,
-                //    "Source : " + ex.Source,
-                //    "Message : " + ex.Message,
-                //    "HelpLink : " + ex.HelpLink,
-                //    "Data : " + ex.Data.ToString()
-                //});
             }
         }
 
@@ -87,7 +79,7 @@ namespace Note_Keeper
             Application.Current.Dispatcher.Invoke((Action)delegate
             {
                 container.Content = p;
-            });
+            }, System.Windows.Threading.DispatcherPriority.Loaded);
         }
 
         static Home home;

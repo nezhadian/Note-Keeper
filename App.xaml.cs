@@ -14,7 +14,7 @@ namespace Note_Keeper
     /// </summary>
     public partial class App : Application
     {
-        const string DATA_FILE_PATH = "ApplicationData.dat";
+        const string SETTING_FILE_NAME = "ApplicationData.dat";
 
         private static bool _isLight;
         public static bool IsLight
@@ -31,32 +31,33 @@ namespace Note_Keeper
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            try
-            {
-                XmlSerializer xml = new XmlSerializer(typeof(bool));
-                FileStream file = File.OpenRead(DATA_FILE_PATH);
-                IsLight = (bool)xml.Deserialize(file);
+            Environment.CurrentDirectory = GetWorkDirectory();
 
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
+            if (File.Exists(SETTING_FILE_NAME))
+                IsLight = Convert.ToBoolean(File.ReadAllText(SETTING_FILE_NAME));
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
+            File.WriteAllText(SETTING_FILE_NAME, IsLight + "");
+        }
+
+        public string GetWorkDirectory()
+        {
+            DirectoryInfo info = new DirectoryInfo(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "NoteKeeper"));
+
             try
             {
-                XmlSerializer xml = new XmlSerializer(typeof(bool));
-                FileStream file = File.OpenWrite(DATA_FILE_PATH);
-                xml.Serialize(file, IsLight);
+                if (!info.Exists)
+                    info.Create();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                MessageBox.Show("Can`t Save Data", ex.ToString());
             }
+
+            return info.FullName;
         }
     }
 }
