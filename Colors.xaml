@@ -13,7 +13,9 @@
     
     <SolidColorBrush x:Key="IconsColor" Color="#999"/>
     <SolidColorBrush x:Key="IconHoverColor" Color="#555"/>
-    
+
+    <SolidColorBrush x:Key="AlertColor" Color="#FFF10B4A"/>
+    <SolidColorBrush x:Key="DeleteCancelButtonColor" Color="#09f"/>
     
     <!--others-->
 
@@ -27,7 +29,6 @@
     <SolidColorBrush x:Key="CTAButtonTextColor" Color="White"/>
 
     
-    <SolidColorBrush x:Key="AlertColor" Color="#FFF10B4A"/>
     
     <SolidColorBrush x:Key="SecondaryColor" Color="#ddd"/>
     <SolidColorBrush x:Key="SecondaryPressedColor" Color="#bbb"/>
