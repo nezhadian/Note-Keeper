@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="Styles/ScrollViewerStyle.xaml"/>
                 <ResourceDictionary Source="WindowStyle.xaml"/>
                 <ResourceDictionary Source="Styles/ToggleButtonStyle.xaml"/>
+                <ResourceDictionary Source="Styles/MenuItemStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>         
     </Application.Resources>

@@ -1,17 +1,19 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Note_Keeper">
-    
+
     <SolidColorBrush x:Key="PrimaryColor" Color="#FFFF4600"/>
-    
+    <SolidColorBrush x:Key="BackgroundColor" Color="#fff"/>
+
     <SolidColorBrush x:Key="TitleTextColor" Color="#333"/>
     <SolidColorBrush x:Key="TextColor" Color="#444"/>
     <SolidColorBrush x:Key="SubTextColor" Color="#666"/>
     
-    <SolidColorBrush x:Key="ListBoxHoverColor" Color="#FFDEDEDE"/>
+    <SolidColorBrush x:Key="ListBoxHoverColor" Color="#FFF0F0F0"/>
     
     <SolidColorBrush x:Key="IconsColor" Color="#999"/>
     <SolidColorBrush x:Key="IconHoverColor" Color="#555"/>
+    
     
     <!--others-->
 
@@ -25,7 +27,6 @@
     <SolidColorBrush x:Key="CTAButtonTextColor" Color="White"/>
 
     
-    <SolidColorBrush x:Key="BackgroundColor" Color="#eee"/>
     <SolidColorBrush x:Key="AlertColor" Color="#FFF10B4A"/>
     
     <SolidColorBrush x:Key="SecondaryColor" Color="#ddd"/>
