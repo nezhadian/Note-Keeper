@@ -28,7 +28,7 @@ namespace Note_Keeper
                 if(value != null)
                 {
                     txtTitle.Text = value.Title;
-                    txtContent.Text = value.Content.Substring(0, value.Content.Length < 30 ? value.Content.Length : 30);
+                    txtContent.Text = value.Content.Substring(0, value.Content.Length < 40 ? value.Content.Length : 40).Replace("\n"," ");
                     _data = value;
                     RefreshDateTime();
                     

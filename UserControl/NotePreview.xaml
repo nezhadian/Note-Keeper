@@ -37,12 +37,13 @@
             <TextBlock
                     Grid.Row="1"
                     Style="{StaticResource NormalText}"
-                    Foreground="{StaticResource SubTextColor}"
+                    Foreground="{DynamicResource SubTextColor}"
+                    TextTrimming="WordEllipsis"
                     x:Name="txtContent"
                     Text="Content"/>
 
             <!--Last Edited-->
-            <TextBlock   x:Name="txtDate" Style="{StaticResource DetailText}" Foreground="{DynamicResource DetailTextColor}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
+            <TextBlock x:Name="txtDate" Style="{StaticResource DetailText}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
 
         </Grid>
     </Border>

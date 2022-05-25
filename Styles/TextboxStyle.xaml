@@ -4,7 +4,7 @@
     <Style x:Key="TextboxStyle" TargetType="TextBox">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TitleTextColor}"/>
         <Setter Property="CaretBrush" Value="{Binding RelativeSource={x:Static RelativeSource.Self},Path=Foreground}"/>
         <Setter Property="SelectionBrush" Value="{DynamicResource PrimaryColor}"/>
         <Setter Property="SelectionOpacity" Value="0.4"/>
