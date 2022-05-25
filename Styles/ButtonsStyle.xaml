@@ -18,6 +18,9 @@
                 <ControlTemplate TargetType="Button">
                     <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" Padding="{TemplateBinding Padding}" CornerRadius="18">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Border.RenderTransform>
+                            <TranslateTransform Y="0" x:Name="translate"/>
+                        </Border.RenderTransform>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
@@ -25,7 +28,6 @@
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
                             <Setter Property="Background" Value="{Binding Converter={StaticResource tintConverter},ConverterParameter={StaticResource PrimaryColor}}" />
-
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

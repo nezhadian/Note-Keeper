@@ -8,6 +8,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -69,20 +70,6 @@ namespace Note_Keeper
             MainWindow.ShowEditor(new EditorPage(Data));
         }
         
-
-        private void Mouse_Enter(object sender, MouseEventArgs e)
-        {
-            pnlControls.Visibility = Visibility.Visible;
-
-        }
-
-        private void Mouse_Leave(object sender, MouseEventArgs e)
-        {
-            pnlControls.Visibility = Visibility.Hidden;
-
-        }
-
-
         private string ConvertToSmoothDate(DateTime date)
         {
             TimeSpan distance = DateTime.Now - date;
@@ -118,6 +105,12 @@ namespace Note_Keeper
             //        else
             //            return date.ToString();
             //}
+        }
+
+
+        private void OpenSelfContextMenu(object sender, RoutedEventArgs e)
+        {
+            ((Button)sender).ContextMenu.IsOpen = true;
         }
     }
 }
