@@ -1,6 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Note_Keeper">
+    <local:ShadeSolidColorConverter x:Key="shadeConverter"/>
+    <local:TintSolidColorConverter x:Key="tintConverter"/>
+
     <Style x:Key="CTAButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="{DynamicResource PrimaryColor}"/>
         <Setter Property="Foreground" Value="{StaticResource CTAButtonTextColor}"/>
@@ -18,10 +21,11 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="OpacityMask" Value="#7F00C5FF" />
+                            <Setter Property="Background" Value="{Binding Converter={StaticResource shadeConverter},ConverterParameter={StaticResource PrimaryColor}}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" Value="{DynamicResource PressedPrimaryColor}"/>
+                            <Setter Property="Background" Value="{Binding Converter={StaticResource tintConverter},ConverterParameter={StaticResource PrimaryColor}}" />
+
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
