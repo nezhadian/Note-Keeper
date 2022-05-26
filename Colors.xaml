@@ -6,14 +6,19 @@
     
     <SolidColorBrush x:Key="PrimaryColor.Hover" Color="#FFFF6023"/>
     <SolidColorBrush x:Key="PrimaryColor.Pressed" Color="#FFE43E00"/>
-    
+    <SolidColorBrush x:Key="PrimaryColor.Contrast" Color="White"/>
+
     <SolidColorBrush x:Key="SecondaryColor" Color="#ddd"/>
 
     <SolidColorBrush x:Key="SecondaryColor.Hover" Color="#FFF1F1F1"/>
     <SolidColorBrush x:Key="SecondaryColor.Pressed" Color="#FFC9C9C9"/>
+    <SolidColorBrush x:Key="SecondaryColor.Contrast" Color="Black"/>
+
+    <Color x:Key="ShadowColor">Black</Color>
 
 
     <SolidColorBrush x:Key="BackgroundColor" Color="#fff"/>
+    <SolidColorBrush x:Key="TitleBarBackgroundColor" Color="#fff"/>
 
     <SolidColorBrush x:Key="TitleTextColor" Color="#333"/>
     <SolidColorBrush x:Key="TextColor" Color="#444"/>
@@ -28,20 +33,5 @@
     <SolidColorBrush x:Key="DeleteCancelButtonColor" Color="#09f"/>
     
     <!--others-->
-
-    <SolidColorBrush x:Key="SecondaryHoverColor" Color="#FFDEDEDE"/>
-    <SolidColorBrush x:Key="DetailTextColor" Color="DimGray"/>
-    
-    <SolidColorBrush x:Key="Button.MouseOver.Background" Color="Red"/>
-    
-    <SolidColorBrush x:Key="PressedPrimaryColor" Color="#FF11AAFF"/>
-    <SolidColorBrush x:Key="HoverPrimaryColor" Color="#FF0088EE"/>
-    <SolidColorBrush x:Key="CTAButtonTextColor" Color="White"/>
-
-    
-    
-    <SolidColorBrush x:Key="SecondaryPressedColor" Color="#bbb"/>
-
-    <SolidColorBrush x:Key="WindowTitleBarColor" Color="#ddd"/>
 
 </ResourceDictionary>

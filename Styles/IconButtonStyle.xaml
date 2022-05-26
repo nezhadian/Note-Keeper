@@ -35,10 +35,10 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" Value="{DynamicResource SecondaryHoverColor}"/>
+                            <Setter Property="Background" Value="{DynamicResource SecondaryColor.Hover}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" Value="{DynamicResource SecondaryPressedColor}"/>
+                            <Setter Property="Background" Value="{DynamicResource SecondaryColor.Pressed}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Opacity" Value="0.2"/>

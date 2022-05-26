@@ -4,7 +4,7 @@
 
     <Style x:Key="CTAButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="{DynamicResource PrimaryColor}"/>
-        <Setter Property="Foreground" Value="{StaticResource CTAButtonTextColor}"/>
+        <Setter Property="Foreground" Value="{StaticResource PrimaryColor.Contrast}"/>
         <Setter Property="Padding" Value="30,0"/>
         <Setter Property="MinWidth" Value="70"/>
         <Setter Property="MinHeight" Value="36"/>

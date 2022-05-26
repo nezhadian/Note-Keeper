@@ -23,12 +23,12 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <Border Background="{DynamicResource SecondaryColor}" Height="38" MouseDown="TitleBar_MouseDown">
+                            <Border Background="{DynamicResource TitleBarBackgroundColor}" Height="38" MouseDown="TitleBar_MouseDown">
                                 <Grid >
-                                    <TextBlock Style="{StaticResource NormalText}" Text="{TemplateBinding Title}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="20,0"/>
+                                    <TextBlock Style="{StaticResource NormalText}" Foreground="{DynamicResource SecondaryColor.Contrast}" Text="{TemplateBinding Title}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="20,0"/>
 
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                        <Button Style="{StaticResource TitlebarButtonStyle}" Content="dark_mode" Click="ChangeTheme_Clicked"/>
+                                        <Button Style="{StaticResource TitlebarButtonStyle}" Content="dark_mode" Click="ChangeTheme_Clicked" x:Name="btnDarkMode"/>
                                         <Button Style="{StaticResource TitlebarButtonStyle}" Content="minimize" Click="Minimize_Button"/>
                                         <Button Style="{StaticResource TitlebarButtonStyle}" Content="&#xE3C1;" Click="Maxmize_Clicked" x:Name="btnMaximize"/>
                                         <Button Style="{StaticResource TitlebarButtonStyle}" Content="close" Click="Close_Clicked"/>

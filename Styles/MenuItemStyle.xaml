@@ -12,7 +12,7 @@
                           IsItemsHost="True" />
 
                         <Border.Effect>
-                            <DropShadowEffect BlurRadius="20" ShadowDepth="1" Opacity="0.1"/>
+                            <DropShadowEffect BlurRadius="20" ShadowDepth="1" Opacity="0.1" Color="{DynamicResource ShadowColor}"/>
                         </Border.Effect>
                     </Border>
                 </ControlTemplate>

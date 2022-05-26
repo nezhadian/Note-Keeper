@@ -110,6 +110,7 @@ namespace Note_Keeper
 
         private void OpenSelfContextMenu(object sender, RoutedEventArgs e)
         {
+            
             ((Button)sender).ContextMenu.IsOpen = true;
         }
     }

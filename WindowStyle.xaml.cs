@@ -47,6 +47,8 @@ namespace Note_Keeper
             window.StateChanged += Window_StateChanged;
             
             btnMaximize = (Button)(window.Template as ControlTemplate).FindName("btnMaximize",window);
+            ((Button)(window.Template as ControlTemplate).FindName("btnDarkMode",window)).Content = App.IsLight ? "dark_mode" : "light_mode";
+
         }
 
         private void Window_StateChanged(object sender, EventArgs e)

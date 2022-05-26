@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="96" d:DesignWidth="300">
     <UserControl.Resources>
-        <ContextMenu x:Key="noteMenu" StaysOpen="True">
+        <ContextMenu x:Key="noteMenu">
             <MenuItem Header="Edit" Click="Edit_Clicked">
                 <MenuItem.Icon>
                     <Path Data="F1 M 2.5 14.375 L 2.5 17.5 L 5.625 17.5 L 14.84375 8.28125 L 11.71875 5.15625 Z M 17.265625 4.6875 L 15.3125 2.734375 C 15.15625 2.578125 14.960938 2.5 14.726562 2.5 C 14.492188 2.5 14.296875 2.578125 14.140625 2.734375 L 12.617188 4.257812 L 15.742188 7.382812 L 17.265625 5.859375 C 17.421875 5.703125 17.5 5.507812 17.5 5.273438 C 17.5 5.039062 17.421875 4.84375 17.265625 4.6875 Z " Fill="{DynamicResource TextColor}" Stretch="Uniform" />
