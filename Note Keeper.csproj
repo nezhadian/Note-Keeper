@@ -89,7 +89,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\EnumConverter.cs" />
-    <Compile Include="Classes\ColorSaturateConverter.cs" />
     <Compile Include="Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
