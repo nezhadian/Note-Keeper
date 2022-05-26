@@ -80,6 +80,8 @@ namespace Note_Keeper
                     noteList.Add(note);
             }
 
+            noteList.Sort((x, y) => DateTime.Compare(y.DateModified, x.DateModified));
+
             return noteList.ToArray();
         }
 
