@@ -23,7 +23,7 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <Border Background="{DynamicResource WindowTitleBarColor}" Height="38" MouseDown="TitleBar_MouseDown">
+                            <Border Background="{DynamicResource SecondaryColor}" Height="38" MouseDown="TitleBar_MouseDown">
                                 <Grid >
                                     <TextBlock Style="{StaticResource NormalText}" Text="{TemplateBinding Title}" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="20,0"/>
 
