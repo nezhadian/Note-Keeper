@@ -22,8 +22,8 @@
         </ContextMenu>
 
     </UserControl.Resources>
-    <Border Padding="20"  Background="Transparent" ContextMenu="{StaticResource noteMenu}">
-        <Grid>
+    <Border Padding="20"  Background="Transparent" ContextMenu="{StaticResource noteMenu}" >
+        <Grid Width="400">
             <!--Layouts-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -58,26 +58,26 @@
             </Button>
 
             <!--Content-->
-            <Grid Grid.Row="1" Grid.Column="0" Background="Transparent">
+            <Border Grid.Row="1" Grid.Column="0" Background="Transparent" HorizontalAlignment="Stretch">
                 <TextBlock
                     Style="{StaticResource NormalText}"
                     Foreground="{DynamicResource SubTextColor}"
-                    MaxWidth="323"
                     HorizontalAlignment="Left"
                     x:Name="txtContent"
                     Text="Content">
                 </TextBlock>
 
-                <Grid.OpacityMask>
+                <Border.OpacityMask>
                     <LinearGradientBrush>
                         <LinearGradientBrush.GradientStops>
                             <GradientStop Offset="0" Color="#fff"/>
-                            <GradientStop Offset="0.8" Color="#fff"/>
+                            <GradientStop Offset="0.8" Color="#FFF"/>
+                            <GradientStop Offset="0.9" Color="#55000000"/>
                             <GradientStop Offset="1" Color="Transparent"/>
                         </LinearGradientBrush.GradientStops>
                     </LinearGradientBrush>
-                </Grid.OpacityMask>
-            </Grid>
+                </Border.OpacityMask>
+            </Border>
             
 
             <!--Last Edited-->
