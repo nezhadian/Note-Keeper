@@ -15,7 +15,10 @@ namespace Note_Keeper
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var sourceColor = (SolidColorBrush)parameter;
+
+            //throw new Exception();
+            
+            var sourceColor = (SolidColorBrush)Application.Current.FindResource(parameter);
 
             return new SolidColorBrush(AddToColor(sourceColor.Color, 20));
             

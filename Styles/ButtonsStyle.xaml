@@ -24,10 +24,10 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" Value="{Binding Converter={StaticResource shadeConverter},ConverterParameter={StaticResource PrimaryColor}}" />
+                            <Setter Property="Background" Value="{DynamicResource PrimaryColor.Hover}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" Value="{Binding Converter={StaticResource tintConverter},ConverterParameter={StaticResource PrimaryColor}}" />
+                            <Setter Property="Background" Value="{DynamicResource PrimaryColor.Pressed}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

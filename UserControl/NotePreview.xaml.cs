@@ -20,7 +20,7 @@ namespace Note_Keeper
     /// </summary>
     public partial class NotePreview : UserControl
     {
-
+        private const int MAX_LENGTH = 200;
         private NoteData _data;
         public NoteData Data
         {
@@ -29,7 +29,7 @@ namespace Note_Keeper
                 if(value != null)
                 {
                     txtTitle.Text = value.Title;
-                    txtContent.Text = value.Content.Substring(0, value.Content.Length < 40 ? value.Content.Length : 40).Replace("\n"," ");
+                    txtContent.Text = value.Content.Substring(0, value.Content.Length < MAX_LENGTH ? value.Content.Length : MAX_LENGTH).Replace("\n", " ");
                     _data = value;
                     RefreshDateTime();
                     

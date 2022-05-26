@@ -31,7 +31,7 @@
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
@@ -58,13 +58,27 @@
             </Button>
 
             <!--Content-->
-            <TextBlock
-                    Grid.Row="1"
+            <Grid Grid.Row="1" Grid.Column="0" Background="Transparent">
+                <TextBlock
                     Style="{StaticResource NormalText}"
                     Foreground="{DynamicResource SubTextColor}"
-                    TextTrimming="WordEllipsis"
+                    MaxWidth="323"
+                    HorizontalAlignment="Left"
                     x:Name="txtContent"
-                    Text="Content"/>
+                    Text="Content">
+                </TextBlock>
+
+                <Grid.OpacityMask>
+                    <LinearGradientBrush>
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0" Color="#fff"/>
+                            <GradientStop Offset="0.8" Color="#fff"/>
+                            <GradientStop Offset="1" Color="Transparent"/>
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Grid.OpacityMask>
+            </Grid>
+            
 
             <!--Last Edited-->
             <TextBlock x:Name="txtDate" Style="{StaticResource DetailText}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
