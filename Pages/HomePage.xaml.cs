@@ -59,7 +59,7 @@ namespace Note_Keeper
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (ActualWidth < 500)
+            if (ActualWidth < 480)
             {
                 c1.Width = new GridLength(1, GridUnitType.Star);
                 c2.Width = new GridLength(0, GridUnitType.Pixel);
