@@ -31,7 +31,12 @@
 
     <SolidColorBrush x:Key="AlertColor" Color="#FFF10B4A"/>
     <SolidColorBrush x:Key="DeleteCancelButtonColor" Color="#09f"/>
-    
+
+    <SolidColorBrush x:Key="Scrollbar" Color="#eee"/>
+    <SolidColorBrush x:Key="Scrollbar.Thumb" Color="#ddd"/>
+    <SolidColorBrush x:Key="Scrollbar.ThumbHover" Color="#999"/>
+
+
     <!--others-->
 
 </ResourceDictionary>
