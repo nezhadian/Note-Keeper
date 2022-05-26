@@ -10,9 +10,9 @@
       Title="HomePage">
 
     <Grid>
-        <Grid Margin="20" x:Name="mainContent">
+        <Grid Margin="0,20,0,0" x:Name="mainContent">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="450" x:Name="c1"/>
+                <ColumnDefinition Width="480" x:Name="c1"/>
                 <ColumnDefinition Width="*" x:Name="c2"/>
             </Grid.ColumnDefinitions>
 
@@ -21,9 +21,11 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Button HorizontalAlignment="Left" Style="{StaticResource CTAButtonStyle}" Content="Write an Note" Margin="0,0,0,20" Command="{x:Static ApplicationCommands.New}"/>
+            <Button HorizontalAlignment="Left" Style="{StaticResource CTAButtonStyle}" Content="Write an Note" Margin="40,0,0,20" Command="{x:Static ApplicationCommands.New}"/>
 
             <ListBox x:Name="lstNotes" SelectionChanged="OnSelectionChanged" Style="{StaticResource ListBoxStyle}" Grid.Row="1" />
+
+            <Rectangle Grid.Row="1" Fill="{DynamicResource SecondaryColor}" Width="1" HorizontalAlignment="Right"/>
 
             <local:NoteLongPreview x:Name="ctlNotePreview" Grid.Column="1" Grid.Row="1" MinWidth="300"/>
 

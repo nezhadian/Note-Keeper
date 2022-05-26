@@ -67,7 +67,7 @@ namespace Note_Keeper
             }
             else
             {
-                c1.Width = new GridLength(450, GridUnitType.Pixel);
+                c1.Width = new GridLength(480, GridUnitType.Pixel);
                 c2.Width = new GridLength(1, GridUnitType.Star);
                 ctlNotePreview.Visibility = Visibility.Visible;
             }
