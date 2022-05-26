@@ -75,7 +75,9 @@ namespace Note_Keeper
             DirectoryInfo info = new DirectoryInfo("data");
             foreach (var file in info.GetFiles())
             {
-                    noteList.Add((NoteData)xml.Deserialize(file.OpenRead()));
+                NoteData note = (NoteData)xml.Deserialize(file.OpenRead());
+                if(note.Id + "" == file.Name)
+                    noteList.Add(note);
             }
 
             return noteList.ToArray();
