@@ -3,8 +3,9 @@
                     xmlns:local="clr-namespace:Note_Keeper" xmlns:System="clr-namespace:System;assembly=mscorlib">
     <FontFamily x:Key="MaterialIcons">pack://application:,,,/Fonts/#Material Icons</FontFamily>
 
-    <System:Double x:Key="Scrollbar.Width">10</System:Double>
-    <CornerRadius x:Key="Scrollbar.HalfWidth">5</CornerRadius>
+    <System:Double x:Key="Scrollbar.Area">30</System:Double>
+    <System:Double x:Key="Scrollbar.NormalSize">15</System:Double>
+    <System:Double x:Key="Scrollbar.MiniSize">3</System:Double>
 
     <local:EnumConverter x:Key="EnumConverter"/>
 

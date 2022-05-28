@@ -15,7 +15,7 @@
                             <ColumnDefinition  Width="auto"/>
                         </Grid.ColumnDefinitions>
 
-                        <ScrollContentPresenter Margin="{TemplateBinding Padding}"/>
+                        <ScrollContentPresenter Margin="{TemplateBinding Padding}" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
                         
                         <ScrollBar x:Name="PART_VerticalScrollBar"
                                    Value="{TemplateBinding VerticalOffset}"

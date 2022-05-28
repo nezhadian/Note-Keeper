@@ -12,7 +12,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Thumb">
-                    <Border Background="{TemplateBinding Background}" CornerRadius="{StaticResource Scrollbar.HalfWidth}"/>
+                    <Border Background="{TemplateBinding Background}" CornerRadius="0"/>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="Background" Value="{DynamicResource Scrollbar.ThumbHover}"/>
@@ -24,8 +24,8 @@
     </Style>
 
     <ControlTemplate TargetType="ScrollBar" x:Key="VerticalScrollbar">
-        <Border Background="{TemplateBinding Background}" CornerRadius="{StaticResource Scrollbar.HalfWidth}" >
-            <Grid>
+        <Border  Background="Transparent">
+            <Grid Background="{TemplateBinding Background}"  HorizontalAlignment="Right" Width="{StaticResource Scrollbar.MiniSize}" x:Name="content" >
                 <Track Grid.Row="1" x:Name="PART_Track" IsDirectionReversed="True">
                     <Track.DecreaseRepeatButton>
                         <RepeatButton Template="{StaticResource PageButtons}" Command="ScrollBar.PageUpCommand" />
@@ -41,11 +41,42 @@
                 </Track>
             </Grid>
         </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="content"
+                                Storyboard.TargetProperty="Width"
+                                To="{StaticResource Scrollbar.NormalSize}"
+                                BeginTime="0:0:0.2"
+                                Duration="0:0:0.1"
+                                />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="content"
+                                Storyboard.TargetProperty="Width"
+                                To="{StaticResource Scrollbar.MiniSize}"
+                                BeginTime="0:0:0.7"
+                                Duration="0:0:0.1"
+                                />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <ControlTemplate TargetType="ScrollBar" x:Key="HorizontalScrollbar">
-        <Border Background="{TemplateBinding Background}" CornerRadius="{StaticResource Scrollbar.HalfWidth}" >
-            <Grid>
+        <Border Background="Transparent" >
+            <Grid Background="{TemplateBinding Background}" Height="{StaticResource Scrollbar.MiniSize}" VerticalAlignment="Bottom" x:Name="content">
                 <Track x:Name="PART_Track">
                     <Track.DecreaseRepeatButton>
                         <RepeatButton Template="{StaticResource PageButtons}" Command="ScrollBar.PageLeftCommand" />
@@ -61,6 +92,38 @@
                 </Track>
             </Grid>
         </Border>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="content"
+                                Storyboard.TargetProperty="Height"
+                                To="{StaticResource Scrollbar.NormalSize}"
+                                BeginTime="0:0:0.2"
+                                Duration="0:0:0.1"
+                                />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetName="content"
+                                Storyboard.TargetProperty="Height"
+                                To="{StaticResource Scrollbar.MiniSize}"
+                                BeginTime="0:0:0.7"
+                                Duration="0:0:0.1"
+                                />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style TargetType="ScrollBar" >
@@ -69,17 +132,12 @@
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Vertical">
                 <Setter Property="Template" Value="{StaticResource VerticalScrollbar}"/>
-                <Setter Property="MinWidth" Value="{StaticResource Scrollbar.Width}"/>
-                <Setter Property="Width" Value="0"/>
-                <Setter Property="Height" Value="auto"/>
-                <Setter Property="Margin" Value="10,0,5,0"/>
+                <Setter Property="Width" Value="{StaticResource Scrollbar.Area}"/>
             </Trigger>
             <Trigger Property="Orientation" Value="Horizontal">
                 <Setter Property="Template" Value="{StaticResource HorizontalScrollbar}"/>
-                <Setter Property="MinHeight" Value="{StaticResource Scrollbar.Width}"/>
-                <Setter Property="Height" Value="0"/>
-                <Setter Property="Width" Value="auto"/>
-                <Setter Property="Margin" Value="0,10,0,5"/>
+                <Setter Property="Height" Value="{StaticResource Scrollbar.Area}"/>
+
             </Trigger>
         </Style.Triggers>
     </Style>
