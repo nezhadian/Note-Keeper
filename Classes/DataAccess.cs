@@ -70,14 +70,11 @@ namespace Note_Keeper
         internal static NoteData[] ReadNotesList()
         {
             List<NoteData> noteList = new List<NoteData>();
-            XmlSerializer xml = new XmlSerializer(typeof(NoteData));
 
             DirectoryInfo info = new DirectoryInfo("data");
             foreach (var file in info.GetFiles())
             {
-                NoteData note = (NoteData)xml.Deserialize(file.OpenRead());
-                if(note.Id + "" == file.Name)
-                    noteList.Add(note);
+                noteList.Add(new NoteData(file));
             }
 
             noteList.Sort((x, y) => DateTime.Compare(y.DateModified, x.DateModified));
