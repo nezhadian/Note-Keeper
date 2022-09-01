@@ -23,7 +23,7 @@
 
     </UserControl.Resources>
     <Border Padding="25,20,20,20"  Background="Transparent" ContextMenu="{StaticResource noteMenu}" >
-        <Grid Width="450">
+        <Grid Width="400">
             <!--Layouts-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
