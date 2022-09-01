@@ -24,24 +24,20 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+        <ToolBarPanel VerticalAlignment="Center" Orientation="Horizontal">
+            <ToolBar>
+                <Button Content="Home"/>
+                <Button Content="Save"/>
+                
+            </ToolBar>
             
-            <Button Content="home"  Click="Home_Clicked" Style="{StaticResource IconToolbarButtonStyle}" VerticalAlignment="Center"/>
-            <Button Content="save" Style="{StaticResource IconToolbarButtonStyle}" Command="{x:Static ApplicationCommands.Save}" VerticalAlignment="Center"/>
-
-            <Rectangle Fill="{DynamicResource SecondaryColor}" Width="2" Margin="5,5,10,5"/>
-
-            <StackPanel Orientation="Horizontal">
-                <RadioButton Content="&#xE236;" Style="{StaticResource ToggleButtonStyle}" IsChecked="{Binding Converter={StaticResource EnumConverter},Path=TextAlignment,ConverterParameter=Left,ElementName=txtContent,Mode=TwoWay}" />
-                <RadioButton Content="&#xE234;" Style="{StaticResource ToggleButtonStyle}" IsChecked="{Binding Converter={StaticResource EnumConverter},Path=TextAlignment,ConverterParameter=Center,ElementName=txtContent,Mode=TwoWay}" />
-                <RadioButton Content="&#xE237;" Style="{StaticResource ToggleButtonStyle}" IsChecked="{Binding Converter={StaticResource EnumConverter},Path=TextAlignment,ConverterParameter=Right,ElementName=txtContent,Mode=TwoWay}"/>
-            </StackPanel>
-
-            <Rectangle Fill="{DynamicResource SecondaryColor}" Width="2" Margin="5"/>
-
-            <ToggleButton Content="wrap_text" Style="{StaticResource ToggleButtonStyle}" IsChecked="{Binding Converter={StaticResource EnumConverter},Path=TextWrapping,ConverterParameter=Wrap NoWrap,ElementName=txtContent,Mode=TwoWay}"/>
-
-        </StackPanel>
+            <ToolBar>
+                <RadioButton GroupName="alignment" Content="Align Left"/>
+                <RadioButton GroupName="alignment" Content="Align Center"/>
+                <RadioButton GroupName="alignment" Content="Align Right"/>
+                
+            </ToolBar>
+        </ToolBarPanel>
 
         <TextBox 
             Grid.Row="1"
@@ -53,7 +49,6 @@
             Style="{StaticResource TextboxStyle}"
             Text="This is Title"/>
 
-        <!--<Rectangle Fill="{DynamicResource SecondaryColor}" Grid.Row="2" Height="1" Margin="0,5"/>-->
 
         <TextBox 
             Grid.Row="2"
@@ -67,5 +62,7 @@
             Padding="0,10,0,0"
             Foreground="{DynamicResource TextColor}"
             Text="This is a long Text"/>
+        
+        
     </Grid>
 </Page>

@@ -115,13 +115,7 @@ namespace Note_Keeper
             Data.Title = txtTitle.Text;
             Data.Content = txtContent.Text;
 
-            if (Data.Id == 0)
-
-                Data.Id = DataAccess.Add(Data);
-
-            else
-                DataAccess.Update(Data);
-
+            Data.Save();
             CanSave = false;
         }
 

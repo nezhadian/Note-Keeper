@@ -61,7 +61,7 @@ namespace Note_Keeper
                 Message = $"Realy you want to delete \"{Data.Title}\" note",
                 ButtonsMode = DialogBox.DialogMode.TwoButton
 
-            }.OnAccept += (s, r) => DataAccess.Delete(Data.Id);
+            }.OnAccept += (s, r) => DataAccess.Delete(Data);
         }
 
 
