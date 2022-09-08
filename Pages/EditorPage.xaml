@@ -3,10 +3,12 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:compnentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
       xmlns:local="clr-namespace:Note_Keeper"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1366"
       Loaded="Page_Loaded"
+      
       Title="AddPage">
 
     <Page.CommandBindings>
@@ -17,6 +19,14 @@
             />
     </Page.CommandBindings>
 
+    <Page.Resources>
+        <CollectionViewSource x:Key="FontFamiles" Source="{Binding Source={x:Static Fonts.SystemFontFamilies}}">
+            <CollectionViewSource.SortDescriptions>
+                <compnentModel:SortDescription PropertyName="Source"/>
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+    </Page.Resources>
+
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -26,16 +36,42 @@
 
         <ToolBarPanel VerticalAlignment="Center" Orientation="Horizontal">
             <ToolBar>
-                <Button Content="Home"/>
-                <Button Content="Save"/>
-                
+                <Button Content="home" Click="Home_Clicked"/>
+                <Button Content="save" Command="{x:Static ApplicationCommands.Save}"/>
             </ToolBar>
             
             <ToolBar>
-                <RadioButton GroupName="alignment" Content="Align Left"/>
-                <RadioButton GroupName="alignment" Content="Align Center"/>
-                <RadioButton GroupName="alignment" Content="Align Right"/>
-                
+                <RadioButton GroupName="TextAlignment" Content="" IsChecked="{Binding ElementName=txtContent,Path=TextAlignment,Converter={StaticResource EnumToBoolConverter},ConverterParameter=Left}"/>
+                <RadioButton GroupName="TextAlignment" Content="" IsChecked="{Binding ElementName=txtContent,Path=TextAlignment,Converter={StaticResource EnumToBoolConverter},ConverterParameter=Center}"/>
+                <RadioButton GroupName="TextAlignment" Content="" IsChecked="{Binding ElementName=txtContent,Path=TextAlignment,Converter={StaticResource EnumToBoolConverter},ConverterParameter=Right}"/>
+            </ToolBar>
+
+            <ToolBar>
+                <ComboBox IsEditable="True" Text="{Binding ElementName=txtContent,Path=FontFamily,Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource FontFamiles}}"/>
+                <ComboBox IsEditable="True" Text="{Binding ElementName=txtContent,Path=FontSize,Mode=TwoWay}" Padding="0,0,15,0">
+                    <ComboBoxItem Content="8"/>
+                    <ComboBoxItem Content="9"/>
+                    <ComboBoxItem Content="10"/>
+                    <ComboBoxItem Content="12"/>
+                    <ComboBoxItem Content="14"/>
+                    <ComboBoxItem Content="16"/>
+                    <ComboBoxItem Content="18"/>
+                    <ComboBoxItem Content="20"/>
+                    <ComboBoxItem Content="22"/>
+                    <ComboBoxItem Content="24"/>
+                    <ComboBoxItem Content="27"/>
+                    <ComboBoxItem Content="30"/>
+                    <ComboBoxItem Content="36"/>
+                    <ComboBoxItem Content="40"/>
+                    <ComboBoxItem Content="48"/>
+                    <ComboBoxItem Content="56"/>
+                    <ComboBoxItem Content="60"/>
+                    <ComboBoxItem Content="72"/>
+                </ComboBox>
+            </ToolBar>
+
+            <ToolBar>
+                <ToggleButton Content="" IsChecked="{Binding ElementName=txtContent,Path=TextWrapping,Converter={StaticResource EnumToBoolConverter},ConverterParameter=Wrap}"/>
             </ToolBar>
         </ToolBarPanel>
 

@@ -69,21 +69,17 @@ namespace Note_Keeper
         }
         #endregion
     }
-    class EnumConverter : IValueConverter
+
+    class EnumToBoolConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string[] splited = parameter.ToString().Split(' ');
-
-            return value.ToString() == splited[0];
+            return value.ToString() == parameter.ToString();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string[] splited = parameter.ToString().Split(' ');
-
-            return (bool)value ? Enum.Parse(targetType, splited[0]) : splited.Length == 2 ? Enum.Parse(targetType, splited[1]) : Binding.DoNothing;
-
+            return targetType.IsEnum ? Enum.Parse(targetType, parameter.ToString()) : Binding.DoNothing;
         }
     }
 }

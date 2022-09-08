@@ -8,12 +8,12 @@
     <FontFamily x:Key="MaterialIcons">pack://application:,,,/Fonts/#Material Icons</FontFamily>
     
     <!-- ______________________ MainValues ______________________ -->
-    <System:Double x:Key="Scrollbar.Area">30</System:Double>
+    <System:Double x:Key="Scrollbar.Area">15</System:Double>
     <System:Double x:Key="Scrollbar.NormalSize">15</System:Double>
     <System:Double x:Key="Scrollbar.MiniSize">2</System:Double>
-    
+
     <!-- ______________________ Converters ______________________ -->
-    <local:EnumConverter x:Key="EnumConverter"/>
+    <local:EnumToBoolConverter x:Key="EnumToBoolConverter"/>
 
     <!-- ______________________ ListBoxStyle ______________________ -->
     <Style x:Key="ListBoxStyle" TargetType="ListBox">
@@ -179,14 +179,17 @@
     </Style>
     
     <!-- ______________________ Icon Button Styles ______________________ -->
-    <Style x:Key="IconButtonStyle" TargetType="Button">
+    <Style x:Key="IconBaseButtonStyle" TargetType="Control">
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontFamily" Value="{StaticResource MaterialIcons}"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{DynamicResource IconsColor}"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
-        <Setter Property="Template">
+    </Style>
+    
+    <Style x:Key="IconButtonStyle" TargetType="Button" BasedOn="{StaticResource IconBaseButtonStyle}">
+        <Setter Property="Button.Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border Padding="{TemplateBinding Padding}">
@@ -201,31 +204,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="IconToolbarButtonStyle" TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
-        <Setter Property="Foreground" Value="{DynamicResource IconsColor}"/>
-        <Setter Property="Padding" Value="10"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" CornerRadius="5">
-                        <ContentPresenter/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" Value="{DynamicResource SecondaryColor.Hover}"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" Value="{DynamicResource SecondaryColor.Pressed}"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Opacity" Value="0.2"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <Style x:Key="TitlebarButtonStyle" TargetType="Button" BasedOn="{StaticResource IconToolbarButtonStyle}">
+    <Style x:Key="TitlebarButtonStyle" TargetType="Button" BasedOn="{StaticResource IconBaseButtonStyle}">
         <Setter Property="FontSize" Value="17"/>
         <Setter Property="Padding" Value="10,5"/>
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -252,7 +231,6 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
     
     <!-- ______________________ Scrollbar Style ______________________ -->
     <ControlTemplate TargetType="RepeatButton" x:Key="PageButtons">
@@ -385,7 +363,6 @@
             <Trigger Property="Orientation" Value="Horizontal">
                 <Setter Property="Template" Value="{StaticResource HorizontalScrollbar}"/>
                 <Setter Property="Height" Value="{StaticResource Scrollbar.Area}"/>
-
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -438,41 +415,6 @@
         </Setter>
     </Style>
     
-    <!-- ______________________ Toggle Button Style ______________________ -->
-    <Style x:Key="ToggleButtonStyle" TargetType="ToggleButton" >
-        <Setter Property="FontFamily" Value="{StaticResource MaterialIcons}"/>
-        <Setter Property="Padding" Value="10"/>
-        <Setter Property="Foreground" Value="{DynamicResource IconsColor}"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="FontSize" Value="24"/>
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="Template" >
-            <Setter.Value>
-                <ControlTemplate TargetType="ToggleButton">
-                    <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
-                        <ContentPresenter/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" Value="{DynamicResource SecondaryColor.Hover}"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" Value="{DynamicResource SecondaryColor.Pressed}"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="Opacity" Value="0.2"/>
-                        </Trigger>
-                        <Trigger Property="IsChecked" Value="true">
-                            <Setter Property="Foreground" Value="{DynamicResource PrimaryColor}"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    
     <!-- ______________________ Menu Item Style ______________________ -->
     <Style TargetType="ContextMenu">
         <Setter Property="Padding" Value="0,10" />
@@ -507,7 +449,7 @@
                     <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="20" x:Name="iconColumn"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
@@ -530,7 +472,22 @@
                         <Trigger Property="IsPressed" Value="true">
                             <Setter Property="Background" Value="{DynamicResource SecondaryColor.Pressed}" />
                         </Trigger>
+                        <Trigger Property="Icon" Value="{x:Null}">
+                            <Setter Property="Width" Value="0" TargetName="iconColumn"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="Separator">
+        <Setter Property="Padding" Value="15,5,0,5" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Separator">
+                    <Border Padding="{TemplateBinding Padding}">
+                        <Rectangle Height="1" Fill="{TemplateBinding Background}"/>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -581,6 +538,79 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <!-- ______________________ Tool bar ______________________ -->
+    <Style TargetType="ToolBar" >
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToolBar">
+                    <Border>
+                        <ToolBarPanel x:Name="PART_ToolBarPanel" IsItemsHost="true"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{x:Static ToolBar.ToggleButtonStyleKey}" TargetType="ToggleButton" BasedOn="{StaticResource IconBaseButtonStyle}">
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                        <ContentPresenter/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource SecondaryColor.Hover}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource SecondaryColor.Pressed}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" Value="0.2"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter Property="Foreground" Value="{DynamicResource PrimaryColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="{x:Static ToolBar.RadioButtonStyleKey}" TargetType="RadioButton" BasedOn="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}"/>
+
+    <Style x:Key="{x:Static ToolBar.ButtonStyleKey}" TargetType="Button" BasedOn="{StaticResource IconBaseButtonStyle}">
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                        <ContentPresenter/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource SecondaryColor.Hover}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource SecondaryColor.Pressed}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Opacity" Value="0.2"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ______________________ Popup ______________________ -->
+    <Style TargetType="Popup">
+        
     </Style>
 
 

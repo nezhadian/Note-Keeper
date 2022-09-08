@@ -124,5 +124,6 @@ namespace Note_Keeper
             e.CanExecute = CanSave;
         }
         #endregion
+
     }
 }
