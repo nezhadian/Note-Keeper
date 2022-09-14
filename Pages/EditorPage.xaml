@@ -47,8 +47,8 @@
             </ToolBar>
 
             <ToolBar>
-                <ComboBox IsEditable="True" Text="{Binding ElementName=txtContent,Path=FontFamily,Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource FontFamiles}}"/>
-                <ComboBox IsEditable="True" Text="{Binding ElementName=txtContent,Path=FontSize,Mode=TwoWay}" Padding="0,0,15,0">
+                <ComboBox Text="{Binding ElementName=txtContent,Path=FontFamily,Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource FontFamiles}}"/>
+                <ComboBox IsEditable="True" Text="{Binding ElementName=txtContent,Path=FontSize,Mode=TwoWay}" >
                     <ComboBoxItem Content="8"/>
                     <ComboBoxItem Content="9"/>
                     <ComboBoxItem Content="10"/>

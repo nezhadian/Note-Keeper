@@ -15,7 +15,6 @@ namespace Note_Keeper
         #region Window
 
         Window window;
-        Button btnMaximize;
 
         public MyStyles()
         {
@@ -44,28 +43,14 @@ namespace Note_Keeper
             window.WindowState = WindowState.Minimized;
         }
 
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             window = (sender as Window);
-            window.StateChanged += Window_StateChanged;
-
-            btnMaximize = (Button)(window.Template as ControlTemplate).FindName("btnMaximize", window);
-            ((Button)(window.Template as ControlTemplate).FindName("btnDarkMode", window)).Content = App.IsLight ? "dark_mode" : "light_mode";
-
-        }
-
-        private void Window_StateChanged(object sender, EventArgs e)
-        {
-            if (btnMaximize != null)
-                btnMaximize.Content = window.WindowState == WindowState.Normal ? "\ue3c1" : "\ue3e0";
-            window.Margin = window.WindowState == WindowState.Normal ? new Thickness(0) : new Thickness(7.3);
         }
 
         private void ChangeTheme_Clicked(object sender, RoutedEventArgs e)
         {
-            App.IsLight = !App.IsLight;
-            (sender as Button).Content = App.IsLight ? "dark_mode" : "light_mode";
+            App.Settings.IsDarkMode = !App.Settings.IsDarkMode;
         }
         #endregion
     }

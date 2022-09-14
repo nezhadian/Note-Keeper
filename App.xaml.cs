@@ -14,33 +14,40 @@ namespace Note_Keeper
     /// </summary>
     public partial class App : Application
     {
-        const string SETTING_FILE_NAME = "ApplicationData.dat";
+        const string SETTING_FILE_NAME = "ApplicationData.xml";
+        XmlSerializer xml;
 
-        private static bool _isLight;
-        public static bool IsLight
-        {
-            get { return _isLight; }
-            set {
-                _isLight = value;
-                ResourceDictionary colorDic = Current.Resources.MergedDictionaries[0];
-                colorDic.Source = new Uri(value ? "Colors.xaml" : "Colors_Dark.xaml", UriKind.Relative);
-            }
-        }
-
+        public static ApplicationSettings Settings { get; private set; }
 
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
             Environment.CurrentDirectory = GetWorkDirectory();
-
-            if (File.Exists(SETTING_FILE_NAME))
-                IsLight = Convert.ToBoolean(File.ReadAllText(SETTING_FILE_NAME));
+            xml = new XmlSerializer(typeof(ApplicationSettings));
+            try
+            {
+                if (File.Exists(SETTING_FILE_NAME))
+                    Settings = (ApplicationSettings)xml.Deserialize(File.OpenRead(SETTING_FILE_NAME));
+                else
+                    Settings = new ApplicationSettings();
+            }
+            catch
+            {
+                MessageBox.Show("Error In Parsing App Settings XML File");
+                Settings = new ApplicationSettings();
+            }
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
-            File.WriteAllText(SETTING_FILE_NAME, IsLight + "");
+            try
+            {
+                FileStream fs = File.Open(SETTING_FILE_NAME, FileMode.OpenOrCreate);
+                xml.Serialize(fs, Settings);
+                fs.SetLength(fs.Position);
+            }
+            catch { }
         }
 
         public string GetWorkDirectory()
